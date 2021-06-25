@@ -13,7 +13,7 @@ public class Model {
     // The Program logic
 
     /**
-     * in this method add valueString with this.value
+     * in this method add valueString with helloValue and worldValue
      * @return sentence
      */
 
