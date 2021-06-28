@@ -15,7 +15,7 @@ public class Controller {
     public void processUser(){
         Scanner sc = new Scanner(System.in);
 
-        model.generateNumber(0, 100);
+        model.generateNumber(model.getMinValueCurrent(), model.getMaxValueCurrent());
 
         view.printMessage(View.DATA_FOR_USER + View.RANGE_TO_GUESS
                             + model.getMinValueCurrent() + " - "
@@ -60,10 +60,9 @@ public class Controller {
             }
             // check value in diapason
             res = sc.nextInt();
-            if ((res <= model.getMinValueCurrent() &&
-                    res >= model.getMaxValueCurrent()) ||
-                    model.getTries().contains(res) ) {
-                view.printMessage(view.WRONG_RANGE_DATA
+            if (res <= model.getMinValueCurrent() &&
+                    res >= model.getMaxValueCurrent()) {
+                view.printMessage(view.WRONG_INPUT_DATA
                         + View.INPUT_INT_DATA);
                 continue ;
             }

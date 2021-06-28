@@ -8,7 +8,6 @@ public class View {
     public static final String INPUT_INT_DATA = "Input INT value = ";
     public static final String GENERATED_NUMBER_VALUE = "Generated number = ";
 
-    public static final String WRONG_RANGE_DATA = "The data is out of range! Repeat please! ";
     public static final String WRONG_INPUT_DATA = "Wrong input! Repeat please! ";
     public static final String WRONG_NUMBER_VALUE =
                     "That's not the generated number. Try again";
