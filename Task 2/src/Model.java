@@ -3,8 +3,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Model {
     private int value;
-    private int minValueCurrent = 0;
-    private int maxValueCurrent = 100;
+    private int minValueCurrent;
+    private int maxValueCurrent;
     private ArrayList<Integer> tries = new ArrayList<>();
 
     public int getValue() {
@@ -19,6 +19,14 @@ public class Model {
         return maxValueCurrent;
     }
 
+    public void setMinValueCurrent(int minValueCurrent) {
+        this.minValueCurrent = minValueCurrent;
+    }
+
+    public void setMaxValueCurrent(int maxValueCurrent) {
+        this.maxValueCurrent = maxValueCurrent;
+    }
+
     public ArrayList<Integer> getTries() {
         return tries;
     }
@@ -31,8 +39,9 @@ public class Model {
     // The Utility methods
 
     public int generateNumber(int min, int max) {
-        //add 1 to make it inclusive
-        value = ThreadLocalRandom.current().nextInt(min, max + 1);
+        //add 1 to max to make it inclusive
+        //add 1 to min to make it exclusive
+        value = ThreadLocalRandom.current().nextInt(min + 1 , max);
         return value;
     }
 

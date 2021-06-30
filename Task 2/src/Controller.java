@@ -15,17 +15,20 @@ public class Controller {
     public void processUser(){
         Scanner sc = new Scanner(System.in);
 
+        //[1; 99]
+        model.setMinValueCurrent(0);
+        model.setMaxValueCurrent(100);
         model.generateNumber(model.getMinValueCurrent(), model.getMaxValueCurrent());
 
         view.printMessage(View.DATA_FOR_USER + View.RANGE_TO_GUESS
-                            + model.getMinValueCurrent() + " - "
-                            + model.getMaxValueCurrent());
+                + model.getMinValueCurrent() + " - "
+                + model.getMaxValueCurrent());
         view.printMessage(View.GENERATED_NUMBER_VALUE + model.getValue());
 
         processResult(sc);
     }
 
-        // The Utility methods
+    // The Utility methods
 
     private void processResult(Scanner sc) {
         compareResult = false;
@@ -60,9 +63,9 @@ public class Controller {
             }
             // check value in diapason
             res = sc.nextInt();
-            if (res <= model.getMinValueCurrent() &&
+            if (res <= model.getMinValueCurrent() ||
                     res >= model.getMaxValueCurrent()) {
-                view.printMessage(view.WRONG_INPUT_DATA
+                view.printMessage(view.VALUE_OUT_OF_RANGE
                         + View.INPUT_INT_DATA);
                 continue ;
             }
