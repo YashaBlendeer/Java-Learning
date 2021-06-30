@@ -18,3 +18,10 @@
 *.png
 
 Examples/
+Something/
+
+out/
+target/
+*.iml
+*.xml
+.idea
