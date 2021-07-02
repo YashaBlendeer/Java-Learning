@@ -1,3 +1,5 @@
+package files;
+
 public class View {
     // Text's constants
 

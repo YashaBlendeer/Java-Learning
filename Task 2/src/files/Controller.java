@@ -1,3 +1,5 @@
+package files;
+
 import java.util.Scanner;
 
 public class Controller {
@@ -16,8 +18,8 @@ public class Controller {
         Scanner sc = new Scanner(System.in);
 
         //[1; 99]
-        model.setMinValueCurrent(0);
-        model.setMaxValueCurrent(100);
+        model.setMinValueCurrent(GlobalConstants.MIN_RANGE_VALUE);
+        model.setMaxValueCurrent(GlobalConstants.MAX_RANGE_VALUE);
         model.generateNumber(model.getMinValueCurrent(), model.getMaxValueCurrent());
 
         view.printMessage(View.DATA_FOR_USER + View.RANGE_TO_GUESS
@@ -75,9 +77,9 @@ public class Controller {
     }
 
      /*  private int inputIntValueWithScanner(Scanner sc){
-            view.printMessage(View.INPUT_INT_DATA);
+            view.printMessage(files.View.INPUT_INT_DATA);
             while( ! sc.hasNextInt()) {
-                view.printMessage(View.WRONG_INPUT_DATA + View.INPUT_INT_DATA);
+                view.printMessage(files.View.WRONG_INPUT_DATA + files.View.INPUT_INT_DATA);
                 sc.next();
             }
             return sc.nextInt();
