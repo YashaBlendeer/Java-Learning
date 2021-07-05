@@ -3,8 +3,8 @@ package tests;
 import files.GlobalConstants;
 import files.Model;
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
-import org.testng.annotations.BeforeClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class ModelTest {
 
