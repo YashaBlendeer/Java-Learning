@@ -1,20 +1,6 @@
-import java.util.ArrayList;
+package Model;
 
-public class Notebook {
-    private ArrayList<User> users = new ArrayList<>();
-
-    public ArrayList<User> getUsers() {
-        return users;
-    }
-
-    public ArrayList<User> setUsers(User user) {
-        users.add(user);
-        return users;
-    }
-
-}
-
-class User {
+public class User {
     private String name;
     private String surname;
     private String patronymic;
