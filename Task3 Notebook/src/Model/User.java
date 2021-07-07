@@ -48,11 +48,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", nickname='" + nickname + '\'' +
-                '}';
+        return "User:\n" +
+                "name:'" + name + '\'' +
+                ", surname:'" + surname + '\'' +
+                ", patronymic:'" + patronymic + '\'' +
+                ", nickname:'" + nickname + '\'';
     }
 }
