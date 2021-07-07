@@ -10,7 +10,6 @@ import static View.TextConstants.*;
 public class Controller {
     private final Model model;
     private final View view;
-    private RegexPatterns regex;
 
     private String name;
     private String surname;
@@ -39,10 +38,10 @@ public class Controller {
     // The Utility methods
 
     private String inputValueWithScanner(Scanner sc, String message, String regex){
-        view.printMessage(message);
+        view.printStringInput(message);
         String value;
 
-        while (!(sc.hasNext() && !isValid(value = sc.next(), regex))) {
+        while (!(sc.hasNext() && isValid(value = sc.next(), regex))) {
             view.printWrongStringInput(message);
         }
 
