@@ -24,31 +24,16 @@ public class Controller {
     //Work method
     public void processUser(){
         Scanner sc = new Scanner(System.in);
+        UtilityController utilityController =
+                new UtilityController(view, sc);
         String str = (String.valueOf(View.bundle.getLocale()).equals("ua"))
                 ? REGEX_UA_PATTERN : REGEX_ENG_PATTERN;
 
-        name = inputValueWithScanner(sc, NAME, str);
-        surname = inputValueWithScanner(sc, SURNAME, str);
-        patronymic = inputValueWithScanner(sc, PATRONYMIC, str);
-        nickname = inputValueWithScanner(sc, NICKNAME, REGEX_LOGIN_PATTERN);
+        name = utilityController.inputValueWithScanner(sc, NAME, str);
+        surname = utilityController.inputValueWithScanner(sc, SURNAME, str);
+        patronymic = utilityController.inputValueWithScanner(sc, PATRONYMIC, str);
+        nickname = utilityController.inputValueWithScanner(sc, NICKNAME, REGEX_LOGIN_PATTERN);
         model.setUsers(name, surname, patronymic, nickname);
         view.printMessage(model.getUsers().toString());
-    }
-
-    // The Utility methods
-
-    private String inputValueWithScanner(Scanner sc, String message, String regex){
-        view.printStringInput(message);
-        String value;
-
-        while (!(sc.hasNext() && isValid(value = sc.next(), regex))) {
-            view.printWrongStringInput(message);
-        }
-
-        return value;
-    }
-
-    public boolean isValid(String input, String regex) {
-        return input.matches(regex);
     }
 }
