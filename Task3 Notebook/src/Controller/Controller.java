@@ -1,6 +1,9 @@
 package Controller;
 
 import Model.Model;
+import Model.User;
+import Model.ModelDB;
+import Model.NotUniqueNicknameException;
 import View.View;
 
 import java.util.Scanner;
@@ -22,17 +25,27 @@ public class Controller {
     }
 
     //Work method
-    public void processUser(){
+    public void processUser() {
         Scanner sc = new Scanner(System.in);
+        ModelDB mdb = new ModelDB(model);
         UtilityController utilityController =
-                new UtilityController(view, sc);
+                new UtilityController(view, sc, model);
         String str = (String.valueOf(View.bundle.getLocale()).equals("ua"))
                 ? REGEX_UA_PATTERN : REGEX_ENG_PATTERN;
+
+        mdb.addDB();
 
         name = utilityController.inputValueWithScanner(sc, NAME, str);
         surname = utilityController.inputValueWithScanner(sc, SURNAME, str);
         patronymic = utilityController.inputValueWithScanner(sc, PATRONYMIC, str);
-        nickname = utilityController.inputValueWithScanner(sc, NICKNAME, REGEX_LOGIN_PATTERN);
+
+        try {
+            nickname = utilityController.inputLoginWithScanner(sc, NICKNAME, REGEX_LOGIN_PATTERN);
+
+        } catch (NotUniqueNicknameException e) {
+            e.printStackTrace();
+        }
+
         model.setUsers(name, surname, patronymic, nickname);
         view.printMessage(model.getUsers().toString());
     }

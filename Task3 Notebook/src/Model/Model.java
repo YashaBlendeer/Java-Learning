@@ -13,4 +13,13 @@ public class Model {
         users.add(new User(name, surname, patronymic, login));
         return users;
     }
+
+    public boolean NonUniqueNicknameCheck (String checkedNickname){
+        for(User user : getUsers()) {
+            if (user.getNickname().equals(checkedNickname)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
