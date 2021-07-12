@@ -33,18 +33,23 @@ public class Controller {
         String str = (String.valueOf(View.bundle.getLocale()).equals("ua"))
                 ? REGEX_UA_PATTERN : REGEX_ENG_PATTERN;
 
-        mdb.addDB();
+        mdb.addDB(); //add users
 
         name = utilityController.inputValueWithScanner(sc, NAME, str);
         surname = utilityController.inputValueWithScanner(sc, SURNAME, str);
         patronymic = utilityController.inputValueWithScanner(sc, PATRONYMIC, str);
 
-        try {
-            nickname = utilityController.inputLoginWithScanner(sc, NICKNAME, REGEX_LOGIN_PATTERN);
 
-        } catch (NotUniqueNicknameException e) {
-            e.printStackTrace();
-        }
+        boolean nonUnique;
+        do {
+            try {
+                nickname = utilityController.inputLoginWithScanner(sc, NICKNAME, REGEX_LOGIN_PATTERN);
+                nonUnique = false;
+            } catch (NotUniqueNicknameException e) {
+                e.printStackTrace();
+                nonUnique = true;
+            }
+        } while (nonUnique);
 
         model.setUsers(name, surname, patronymic, nickname);
         view.printMessage(model.getUsers().toString());
