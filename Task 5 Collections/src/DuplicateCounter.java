@@ -2,31 +2,13 @@ import java.util.*;
 
 public class DuplicateCounter {
     public static void main(String[] args){
-        ArrayList<Integer> nums = new ArrayList<>();
-
-        nums.add(56);
-        nums.add(5);
-        nums.add(5);
-        nums.add(2);
-        nums.add(1);
-        nums.add(56);
-        nums.add(-5);
-        nums.add(45);
-        nums.add(1);
-        nums.add(14);
-        nums.add(56);
-
+        ArrayList<Integer> nums = new ArrayList<>(List.of(56, 5, 5, 2, 1, 56, -5, 45, 1, 14, 56));
         Map<Integer, Integer> map = new TreeMap<>();
 
         int val;
         for(int num : nums) {
-            if (map.containsKey(num)){
-                val = map.get(num);
-                val++;
-                map.put(num, val);
-            } else {
-                map.put(num, 1);
-            }
+            val = map.containsKey(num) ? map.get(num) + 1 : 1;
+            map.put(num, val);
         }
 
         for (Map.Entry<Integer, Integer> entry : map.entrySet())
