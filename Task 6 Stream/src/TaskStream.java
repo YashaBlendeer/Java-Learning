@@ -11,6 +11,7 @@ public class TaskStream {
         System.out.println(getPositiveElements(nums));
         multiplyElements(nums, 2);
         System.out.println(findMinElement(nums));
+
     }
 
     public static double calcAverage(int[] arr) {
